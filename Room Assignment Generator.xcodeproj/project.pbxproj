@@ -16,6 +16,7 @@
 		433D1BFA1B54ACB800B67CA6 /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D1BF91B54ACB800B67CA6 /* ParticipantViewController.swift */; };
 		433D1BFC1B54AD5400B67CA6 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D1BFB1B54AD5400B67CA6 /* Participant.swift */; };
 		433D1BFE1B54B39C00B67CA6 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433D1BFD1B54B39C00B67CA6 /* ParticipantTableViewCell.swift */; };
+		436D57C71B8A243A00DEFB07 /* RoomAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D57C61B8A243A00DEFB07 /* RoomAssignment.swift */; };
 		438EAA691B651DCB0049A55F /* ParticipantInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438EAA681B651DCB0049A55F /* ParticipantInfoTableViewCell.swift */; };
 		43A93B371B5865FA00C2F70A /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A93B361B5865FA00C2F70A /* LoadViewController.swift */; };
 		43CECD981B5612FC003DC56C /* RoomAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECD971B5612FC003DC56C /* RoomAssignmentTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 		433D1BF91B54ACB800B67CA6 /* ParticipantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; };
 		433D1BFB1B54AD5400B67CA6 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		433D1BFD1B54B39C00B67CA6 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
+		436D57C61B8A243A00DEFB07 /* RoomAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAssignment.swift; sourceTree = "<group>"; };
 		438EAA681B651DCB0049A55F /* ParticipantInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantInfoTableViewCell.swift; sourceTree = "<group>"; };
 		43A93B361B5865FA00C2F70A /* LoadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		43CECD971B5612FC003DC56C /* RoomAssignmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAssignmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				433D1BDB1B54A74500B67CA6 /* Main.storyboard */,
 				433D1BFB1B54AD5400B67CA6 /* Participant.swift */,
 				43CECD991B561461003DC56C /* Assignment.swift */,
+				436D57C61B8A243A00DEFB07 /* RoomAssignment.swift */,
 				433D1BE01B54A74500B67CA6 /* LaunchScreen.xib */,
 				433D1BD51B54A74500B67CA6 /* Supporting Files */,
 			);
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43ECC1121B64188500306480 /* ParticipantInfoViewController.swift in Sources */,
+				436D57C71B8A243A00DEFB07 /* RoomAssignment.swift in Sources */,
 				43A93B371B5865FA00C2F70A /* LoadViewController.swift in Sources */,
 				43CECD9A1B561461003DC56C /* Assignment.swift in Sources */,
 				43CECD981B5612FC003DC56C /* RoomAssignmentTableViewCell.swift in Sources */,

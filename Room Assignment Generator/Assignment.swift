@@ -40,32 +40,35 @@ class Assignment {
     // MARK: Room Assignment Generator
     
     static var participantCompatabilityRating: [[Int]]?
-//    {
-//        let zeroArray = Array<Int>(count: allParticipants!.count , repeatedValue: 0)
-//        var pcr = Array<Array<Int>>(count: allParticipants!.count , repeatedValue: zeroArray)
-//        pcr = [[0],[0]]
-//        if let ap = allParticipants {
-//            for var par1 = 0; par1 < ap.count; par1++ {
-//                for var par2 = 0; par2 < ap.count; par2++ {
-//                    var currentPCR = (abs(ap[par1].age - ap[par2].age))*2
-//                    if par1 == par2 {
-//                        currentPCR = 0
-//                    }
-//                    if let previouslyAcquainted = ap[par2].previouslyAcquainted {
-//                        for acquanted in previouslyAcquainted {
-//                            if ap[par1].number == acquanted {
-//                                currentPCR = 1
-//                            }
-//                        }
-//                    }
-//                    pcr[par1][par2] = currentPCR
-//                }
-//            }
-//        }
-//        return pcr
-//    }
     
     static var allParticipants: [Participant]?
+    
+    class func getPCR(allParticipants: [Participant]) -> [[Int]]? {
+        var zeroArray = Array<Int>(count: allParticipants.count, repeatedValue: 0)
+        var pcr = Array<Array<Int>>(count: allParticipants.count, repeatedValue: zeroArray)
+        let ap = allParticipants
+        for var par1 = 0; par1 < ap.count; par1++ {
+            for var par2 = 0; par2 < ap.count; par2++ {
+                var currentPCR = (abs(ap[par1].age - ap[par2].age))*2
+                if par1 == par2 {
+                    currentPCR = 0
+                }
+                if let previouslyAcquainted = ap[par2].previouslyAcquainted {
+                    for acquanted in previouslyAcquainted {
+                        if ap[par1].number == acquanted {
+                            currentPCR = 1
+                        }
+                    }
+                    pcr[par1][par2] = currentPCR
+                }
+            }
+        }
+        if pcr.count > 0 {
+            return pcr
+        } else {
+            return nil
+        }
+    }
     
     class func assign(participants: [Participant]) -> [[Assignment]] {
         var allRoomAssignments = [[Assignment]]()
@@ -81,56 +84,10 @@ class Assignment {
     }
     
     class func getRoomAssignment(participants: [Participant], secondHalfOfTrip: Bool) -> [Assignment] {
-//        let isOddNumOfMales = checkIfOddNumberPerGender(participants, gender: Participant.Gender.male)
-//        let isOddNumOfFemales = checkIfOddNumberPerGender(participants, gender: Participant.Gender.female)
-//        var singleFemaleAssigned = false
-//        var singleMaleAssigned = false
-//        var room = 1
-//        var assignmentAttempt = 0
-//        var unassignedParticipants = participants
         var unassignedFemaleParticipants = getParticipantsByGender(participants, gender: Participant.Gender.female)
         var unassignedMaleParticipants = getParticipantsByGender(participants, gender: Participant.Gender.male)
         var roomAssignments = getRoommatesForGroup(unassignedFemaleParticipants, maxOccupancy: 3, secondHalfOfTrip: secondHalfOfTrip)
         roomAssignments += getRoommatesForGroup(unassignedMaleParticipants, maxOccupancy: 3, secondHalfOfTrip: secondHalfOfTrip)
-//        while (!unassignedParticipants.isEmpty) {
-//            unassignedParticipants.shuffle()
-//            let par1 = unassignedParticipants.removeLast()
-        
-//            // if odd number per gender assign one male or female to room
-//            if isOddNumOfFemales && par1.gender == Participant.Gender.female && !singleFemaleAssigned {
-//                roomAssignments.append(Assignment(roomNumber: room, participant1: par1))
-//                room++
-//                singleFemaleAssigned = true
-//            } else if isOddNumOfMales && par1.gender == Participant.Gender.male && !singleMaleAssigned {
-//                roomAssignments.append(Assignment(roomNumber: room, participant1: par1))
-//                room++
-//                singleMaleAssigned = true
-//            } else {
-//                // assigning two participants to a double
-//                switch unassignedParticipants.count {
-//                case 0:
-//                    assignmentAttempt++
-//                    if assignmentAttempt > 0 {
-//                        repeatRoommateExecption = true
-//                    }
-//                    getRoomAssignment(participants, secondHalfOfTrip: secondHalfOfTrip)
-//                    
-//                case 1:
-//                    let par2 = unassignedParticipants.removeLast()
-//                    roomAssignments.append(Assignment(roomNumber: room, participant1: par1, participant2: par2))
-//                    allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2)
-//                    room++
-//                    
-//                default:
-//                    if let roommateIndex = findRoommateOrRoommates(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip) {
-//                        let par2 = unassignedParticipants.removeAtIndex(roommateIndex)
-//                        roomAssignments.append(Assignment(roomNumber: room, participant1: par1, participant2: par2))
-//                        allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2)
-//                        room++
-//                    }
-//                }
-//            }
-//        }
         return roomAssignments
     }
     
@@ -149,16 +106,16 @@ class Assignment {
     class func getRoommatesForGroup(participants: [Participant], maxOccupancy: Int, secondHalfOfTrip: Bool) -> [Assignment] {
         var roomAssignments = [Assignment]()
         var unassignedParticipants = participants
+        var pcr = getPCR(participants)!
         var assignmentAttempt = 0
+        var roomNumber = 1
         while (!unassignedParticipants.isEmpty) {
-//            unassignedParticipants.shuffle()
             let numParticipants = unassignedParticipants.count
             let par1 = unassignedParticipants.removeLast()
             var roommates: [Int] = []
             let roommateIndex: [Int]?
             if  numParticipants % maxOccupancy == 0 {
                 for var i = 0; i <= maxOccupancy - 1; i++ {
-                    var pcr = participantCompatabilityRating!
                     var bestMatch = 0
                     for var index = 0; index < numParticipants; index++ {
                         let pcrForCurrentParticipant = pcr[numParticipants][index]
@@ -170,9 +127,8 @@ class Assignment {
                 }
                 let par2 = participants[roommates[0]]
                 let par3 = participants[roommates[1]]
-                roomAssignments.append(Assignment(roomNumber: 1, participant1: par1, participant2: par2, participant3: par3))
+                roomAssignments.append(Assignment(roomNumber: roomNumber++ , participant1: par1, participant2: par2, participant3: par3))
             } else {
-                var pcr = participantCompatabilityRating!
                 var bestMatch = 0
                 for var index = 0; index < numParticipants; index++ {
                     let pcrForCurrentParticipant = pcr[numParticipants][index]
@@ -182,41 +138,9 @@ class Assignment {
                 }
                 roommates.append(bestMatch)
             }
-            
-//                
-//                roommateIndex = findRoommateOrRoommates(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip, numRoommatesToAdd: maxOccupancy)
-//            } else {
-//                roommateIndex = findRoommateOrRoommates(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip, numRoommatesToAdd: 2)
-            }
-//
-//            
-//            
-//            if let rmIndex = roommateIndex {
-//                var par2 = unassignedParticipants.removeAtIndex(rmIndex[1])
-//                var par3: Participant
-//                if unassignedParticipants.count < 1 {
-//                    par3 = unassignedParticipants.removeAtIndex(rmIndex[0])
-//                } else {
-//                    par3 = unassignedParticipants.removeAtIndex(0)
-//                }
-//                roomAssignments.append(Assignment(roomNumber: 1, participant1: par1, participant2: par2, participant3: par3))
-////                allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2, par3: par3)
-//
-//            }
-//        }
+        }
         return roomAssignments
     }
-
-  
-//    class func checkIfOddNumberPerGender(participants: [Participant], gender: Participant.Gender) -> Bool {
-//        var numOfFemaleOrMale = 0
-//        for par in participants {
-//            if par.gender == gender {
-//                numOfFemaleOrMale++
-//            }
-//        }
-//        return numOfFemaleOrMale % 2 == 0 ? false : true
-//    }
 
     static var repeatRoommateExecption = true
 
@@ -253,10 +177,6 @@ class Assignment {
     class func isCloseInAge(par1: Participant, par2: Participant, range: Int) -> Bool {
         return par1.age >= par2.age - range && par1.age <= par2.age + range ? true : false
     }
-    
-//    class func isSameSex(par1: Participant, par2: Participant) -> Bool {
-//        return par1.gender == par2.gender ? true : false
-//    }
     
     class func isNotPreviouslyAcquainted(par1: Participant, par2: Participant) -> Bool {
         if par2.previouslyAcquainted != nil {
@@ -300,52 +220,3 @@ extension Array
     }
 }
 
-
-//if unassignedParticipants.count == 0 {
-//    if isOddNumOfFemales && par1.gender == Participant.Gender.female {
-//        roomAssignments.append(Assignment(roomNumber: room, participant1: par1))
-//    } else if isOddNumOfMales && par1.gender == Participant.Gender.male {
-//        roomAssignments.append(Assignment(roomNumber: room, participant1: par1))
-//    } else {
-//        assignmentAttempt++
-//        if assignmentAttempt > 0 {
-//            repeatRoommateExecption = true
-//        }
-//        getRoomAssignment(participants, secondHalfOfTrip: secondHalfOfTrip)
-//    }
-//} else if unassignedParticipants.count == 1 || (secondHalfOfTrip && unassignedParticipants.count <= 3) {
-//    let par2 = unassignedParticipants.removeLast()
-//    roomAssignments.append(Assignment(roomNumber: room, participant1: par1, participant2: par2))
-//    allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2)
-//    room++
-//} else {
-//    if let roommateIndex = findRoommate(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip) {
-//        let par2 = unassignedParticipants.removeAtIndex(roommateIndex)
-//        roomAssignments.append(Assignment(roomNumber: room, participant1: par1, participant2: par2))
-//        allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2)
-//        room++
-//}
-
-
-//        var room = 1
-//        var roomAssignments = [Assignment]()
-//        var unassignedParticipants = participants
-//        while (!unassignedParticipants.isEmpty) {
-//            unassignedParticipants.shuffle()
-//            let par1 = unassignedParticipants.removeLast()
-//            var par2Index = findRoommate(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip)
-//            while par2Index == nil && !isOddNumOfFemales && roomAssignments.count < participants.count/2 - 1{
-//                unassignedParticipants.shuffle()
-//                par2Index = findRoommate(par1, unassignedParticipants: unassignedParticipants, secondHalfOfTrip: secondHalfOfTrip)
-//            }
-//
-//            var par2: Participant
-//            if par2Index == nil {
-//                par2 = unassignedParticipants.removeLast()
-//            } else {
-//                par2 = unassignedParticipants.removeAtIndex(par2Index!)
-//            }
-//
-//            roomAssignments.append(Assignment(roomNumber: room, participant1: par1, participant2: par2))
-//            allParticipants = rememberRoommates(allParticipants!, par1: par1, par2: par2)
-//            room++

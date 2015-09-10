@@ -21,7 +21,9 @@ class RoomAssignmentViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        allRoomAssignments = Assignment.assign(participants!)
+        let assignment = RoomAssignment()
+        allRoomAssignments = assignment.assign(participants!)
+//        allRoomAssignments = Assignment.assign(participants!)
         roomAssignments = allRoomAssignments[0]
     }
     
