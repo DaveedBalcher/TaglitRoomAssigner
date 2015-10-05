@@ -50,10 +50,11 @@ class RoomAssignmentViewController: UIViewController, UITableViewDelegate, UITab
     
     private struct Storyboard {
         static let DoubleRoomIdentifier = "double room"
+        static let TripleRoomIdentifier = "triple room"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.DoubleRoomIdentifier, forIndexPath: indexPath) as! RoomAssignmentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.TripleRoomIdentifier, forIndexPath: indexPath) as! TripleRoomAssignmentTableViewCell
         
         // Configure Cell
         cell.assignment = roomAssignments[indexPath.row]

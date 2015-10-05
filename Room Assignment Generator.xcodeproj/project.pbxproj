@@ -23,6 +23,7 @@
 		43CECD9A1B561461003DC56C /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECD991B561461003DC56C /* Assignment.swift */; };
 		43CECD9C1B56158A003DC56C /* RoomAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CECD9B1B56158A003DC56C /* RoomAssignmentViewController.swift */; };
 		43ECC1121B64188500306480 /* ParticipantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECC1111B64188500306480 /* ParticipantInfoViewController.swift */; };
+		43FF38181BA1E76F00285985 /* TripleRoomAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF38171BA1E76F00285985 /* TripleRoomAssignmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		43CECD991B561461003DC56C /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		43CECD9B1B56158A003DC56C /* RoomAssignmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomAssignmentViewController.swift; sourceTree = "<group>"; };
 		43ECC1111B64188500306480 /* ParticipantInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantInfoViewController.swift; sourceTree = "<group>"; };
+		43FF38171BA1E76F00285985 /* TripleRoomAssignmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleRoomAssignmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				433D1BFD1B54B39C00B67CA6 /* ParticipantTableViewCell.swift */,
 				43CECD971B5612FC003DC56C /* RoomAssignmentTableViewCell.swift */,
+				43FF38171BA1E76F00285985 /* TripleRoomAssignmentTableViewCell.swift */,
 				438EAA681B651DCB0049A55F /* ParticipantInfoTableViewCell.swift */,
 			);
 			name = TableViewCells;
@@ -263,6 +266,7 @@
 				43CECD9C1B56158A003DC56C /* RoomAssignmentViewController.swift in Sources */,
 				433D1BFA1B54ACB800B67CA6 /* ParticipantViewController.swift in Sources */,
 				433D1BFC1B54AD5400B67CA6 /* Participant.swift in Sources */,
+				43FF38181BA1E76F00285985 /* TripleRoomAssignmentTableViewCell.swift in Sources */,
 				433D1BFE1B54B39C00B67CA6 /* ParticipantTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

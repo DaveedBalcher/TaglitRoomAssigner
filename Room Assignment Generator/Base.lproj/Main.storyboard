@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DvE-c4-Dnw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DvE-c4-Dnw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -403,7 +403,7 @@
                                             <outlet property="roomNumber" destination="kzQ-Nl-RKA" id="eH8-BQ-TlR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="triple room" rowHeight="88" id="DQB-Db-bEf" customClass="RoomAssignmentTableViewCell" customModule="Room_Assignment_Generator" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="triple room" rowHeight="88" id="DQB-Db-bEf" customClass="TripleRoomAssignmentTableViewCell" customModule="Room_Assignment_Generator" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQB-Db-bEf" id="a94-eD-Fad">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -462,6 +462,7 @@
                                         <connections>
                                             <outlet property="participant1" destination="eHM-dr-JGB" id="jsR-dU-hDd"/>
                                             <outlet property="participant2" destination="eyh-Cu-aqx" id="r8B-Th-hEd"/>
+                                            <outlet property="participant3" destination="JaH-zS-rRQ" id="B5t-l6-Wvi"/>
                                             <outlet property="roomNumber" destination="Iqk-0D-rXd" id="KQc-Rv-ldM"/>
                                         </connections>
                                     </tableViewCell>
