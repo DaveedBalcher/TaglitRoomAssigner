@@ -56,6 +56,8 @@ class RoomAssignment {
             switch participantsLeftPerGender {
                 case 0, 2:
                 roomAssignments.append(Assignment(roomNumber: roomNumber++, participant1: keyHolder, participant2: secondRoommate))
+                participants[keyHolderIndex].previousRoommate.append(secondRoommate.number)
+                participants[secondMateIndex].previousRoommate.append(keyHolder.number)
                 
                 default:
                 // Find the third roommate that is compatible with the KeyHolder
@@ -73,6 +75,13 @@ class RoomAssignment {
                 unassignedParticipants.removeAtIndex(thirdMateIndex)
                 
                 roomAssignments.append(Assignment(roomNumber: roomNumber++, participant1: keyHolder, participant2: secondRoommate, participant3: thirdRoommate))
+                
+                participants[keyHolderIndex].previousRoommate.append(secondRoommate.number)
+                participants[keyHolderIndex].previousRoommate.append(thirdRoommate.number)
+                participants[secondMateIndex].previousRoommate.append(keyHolder.number)
+                participants[secondMateIndex].previousRoommate.append(thirdRoommate.number)
+                participants[thirdMateIndex].previousRoommate.append(keyHolder.number)
+                participants[thirdMateIndex].previousRoommate.append(secondRoommate.number)
             }
         }
         
@@ -134,11 +143,6 @@ class RoomAssignment {
 
 
 extension Array {
-    func randomItem() -> T {
-        let index = Int(arc4random_uniform(UInt32(self.count)))
-        return self[index]
-    }
-    
     func randomIndex() -> Int {
         return Int(arc4random_uniform(UInt32(self.count)))
     }

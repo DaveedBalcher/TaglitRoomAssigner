@@ -16,20 +16,21 @@ class RoomAssignmentViewController: UIViewController, UITableViewDelegate, UITab
     var roomAssignments = [Assignment]()
     var participants: [Participant]?
     
-    var altNumber = 0
+    var alterateAssignment = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let assignment = RoomAssignment()
         allRoomAssignments = assignment.assign(participants!)
-//        allRoomAssignments = Assignment.assign(participants!)
         roomAssignments = allRoomAssignments[0]
+        
+        assignmentTableView.rowHeight = 70.0
     }
     
     @IBAction func changedAlternateAssignment(sender: UISegmentedControl) {
-        altNumber = sender.selectedSegmentIndex
-        roomAssignments = allRoomAssignments[altNumber]
+        alterateAssignment = sender.selectedSegmentIndex
+        roomAssignments = allRoomAssignments[alterateAssignment]
         assignmentTableView.reloadData()
     }
 
@@ -61,7 +62,6 @@ class RoomAssignmentViewController: UIViewController, UITableViewDelegate, UITab
         
         return cell
     }
-
     
     
     

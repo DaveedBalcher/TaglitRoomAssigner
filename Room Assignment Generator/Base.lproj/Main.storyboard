@@ -403,7 +403,7 @@
                                             <outlet property="roomNumber" destination="kzQ-Nl-RKA" id="eH8-BQ-TlR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="triple room" rowHeight="88" id="DQB-Db-bEf" customClass="TripleRoomAssignmentTableViewCell" customModule="Room_Assignment_Generator" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="triple room" rowHeight="70" id="DQB-Db-bEf" customClass="TripleRoomAssignmentTableViewCell" customModule="Room_Assignment_Generator" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQB-Db-bEf" id="a94-eD-Fad">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -430,7 +430,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaH-zS-rRQ">
-                                                    <rect key="frame" x="88" y="47" width="244" height="15"/>
+                                                    <rect key="frame" x="88" y="41" width="244" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -450,7 +450,7 @@
                                                 <constraint firstItem="Iqk-0D-rXd" firstAttribute="top" secondItem="a94-eD-Fad" secondAttribute="topMargin" constant="4" id="g8X-sk-ClC"/>
                                                 <constraint firstItem="Iqk-0D-rXd" firstAttribute="leading" secondItem="a94-eD-Fad" secondAttribute="leadingMargin" constant="12" id="lUt-Ha-P81"/>
                                                 <constraint firstItem="JaH-zS-rRQ" firstAttribute="leading" secondItem="eHM-dr-JGB" secondAttribute="leading" id="ud6-K7-dwA"/>
-                                                <constraint firstItem="JaH-zS-rRQ" firstAttribute="top" secondItem="eHM-dr-JGB" secondAttribute="bottom" constant="16" id="xLc-xp-2ie"/>
+                                                <constraint firstItem="JaH-zS-rRQ" firstAttribute="top" secondItem="eHM-dr-JGB" secondAttribute="bottom" constant="10" id="xLc-xp-2ie"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">

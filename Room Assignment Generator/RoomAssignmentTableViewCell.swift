@@ -30,8 +30,17 @@ class RoomAssignmentTableViewCell: UITableViewCell {
         // load new information about participant
         if let assignment = self.assignment {
             roomNumber?.text = "\(assignment.roomNumber):"
-            participant1?.text = assignment.participant1
-            participant2?.text = assignment.participant2
+            participant1?.text = getName(assignment.participant1)
+            participant2?.text = getName(assignment.participant2)
+        }
+    }
+    
+    
+    func getName(participant: Participant?) -> String {
+        if let part = participant {
+            return part.firstName + " " + part.lastName
+        } else {
+            return ""
         }
     }
     
